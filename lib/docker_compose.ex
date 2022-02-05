@@ -162,7 +162,10 @@ defmodule DockerCompose do
   end
 
   defp get_executable do
-    Path.join(:code.priv_dir(:docker_compose), "docker-compose")
+    case :os.type() do
+      {:win32, _} -> "docker-compose"
+      _ -> Path.join(:code.priv_dir(:docker_compose), "docker-compose")
+    end
   end
 
   defp wrapper_opts([{:always_yes, true} | rest]) do
