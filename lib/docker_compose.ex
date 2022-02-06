@@ -163,7 +163,7 @@ defmodule DockerCompose do
 
   defp get_executable do
     case :os.type() do
-      {:win32, _} -> "docker-compose"
+      {:win32, _} -> "docker-compose.exe"
       _ -> Path.join(:code.priv_dir(:docker_compose), "docker-compose")
     end
   end
